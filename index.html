@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💘</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6eb;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: #e6005c;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yesBtn {
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #999;
+      color: white;
+      position: absolute;
+    }
+
+    img {
+      width: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    #result {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container" id="question">
+    <h1>Can you be my Valentine? 💖</h1>
+    <button id="yesBtn">Yes 😍</button>
+    <button id="noBtn">No 🙄</button>
+  </div>
+
+  <div class="container" id="result">
+  <h1>na buang ang utok 😆</h1>
+  <img src="https://drive.google.com/thumbnail?id=1lCMOKYi7PFQ2HfETRB04FThUQA6W8uA5&sz=w1000" alt="Us together">
+</div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const question = document.getElementById("question");
+    const result = document.getElementById("result");
+    const music = document.getElementById("bgMusic");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      question.style.display = "none";
+      result.style.display = "block";
+      music.play();
+    });
+  </script>
+
+</body>
+</html>
