@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? 💖</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffe6eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #ff3366;
+    text-align: center;
+  }
+
+  .bear {
+    width: 200px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #yes {
+    background-color: #ff6699;
+    color: white;
+  }
+
+  #no {
+    background-color: #999;
+    color: white;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<h1 id="topText">Hey cutie! will you be my valentine?🥺👉👈</h1>
+
+<div class="bear" id="bearContainer">
+  <img id="bearImg" src=https://drive.google.com/thumbnail?id=1i2aqYZcJa_pWQPI00Y7vTroLrr8j8RuT&sz=w1000 alt="Bear with rose" width="200">
+</div>
+
+<div class="buttons" id="buttons">
+  <button id="yes">Yes 💖</button>
+  <button id="no">No 🥹</button>
+</div>
+
+<script>
+let noClicks = 0;
+
+const topText = document.getElementById('topText');
+const bearImg = document.getElementById('bearImg');
+const yesBtn = document.getElementById('yes');
+const noBtn = document.getElementById('no');
+const buttonsDiv = document.getElementById('buttons');
+
+function moveNoButton() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 100);
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+}
+
+noBtn.addEventListener('click', () => {
+  noClicks++;
+  if(noClicks < 3) {
+    moveNoButton();
+  } else if(noClicks === 3) {
+    // make no smaller, yes bigger, update text
+    noBtn.style.transform = 'scale(0.6)';
+    yesBtn.style.transform = 'scale(1.5)';
+    topText.textContent = "Are you sure? 🥺";
+    bearImg.src = "https://drive.google.com/thumbnail?id=1LQRV5iSVJnlLr9WysI6OH5kV8OF8MKFd&sz=w1000"; // bear holding tears
+  } else if(noClicks > 3 && noClicks <= 6) {
+    moveNoButton();
+  } else if(noClicks > 6) {
+    // remove no button, make yes bigger, update text
+    noBtn.remove();
+    yesBtn.style.transform = 'scale(2)';
+    topText.textContent = "You have no choice now! ❤️";
+    bearImg.src = "https://drive.google.com/thumbnail?id=10mmMh7iVgtRl6F1xRFDoGl3M-DVP6N85&sz=w1000"; // bear back with rose
+  }
+});
+
+yesBtn.addEventListener('click', () => {
+  topText.textContent = "Yayyyy!! no yes sija Happy Valentine's Day! 💖";
+  bearImg.src = "https://drive.google.com/thumbnail?id=1lCMOKYi7PFQ2HfETRB04FThUQA6W8uA5&sz=w1000";
+  bearImg.alt = "Us together";
+  yesBtn?.remove();
+  noBtn?.remove();
+});
+</script>
+
+</body>
+</html>
